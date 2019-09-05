@@ -31,4 +31,19 @@ class Locker:
         '''
 
         Locker.locker_list.remove(self)
+
+    @classmethod
+    def find_email(cls,email):
+        '''
+        Method that takes in a email and returns a data that matches that number.
+
+        Args:
+            email: email to search for
+        Returns :
+            data of person that matches the email.
+        '''
+
+        for login in cls.locker_list:
+            if login.email == email:
+                return login
     # pass

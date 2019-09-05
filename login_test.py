@@ -55,11 +55,24 @@ class TestLocker(unittest.TestCase):
         test_delete_data to test if we can remove a data from our locker list
         '''
         self.new_lock.save_data()
-        test_user = Locker("bebe","ally","333","bebe@gmail.com") # new data
+        test_user = Locker("bebe","ally","3333","bebe@gmail.com") # new data
         test_user.save_data()
 
         self.new_lock.delete_data()# Deleting a data object
         self.assertEqual(len(Locker.locker_list),1)
+
+    def test_find_data_by_email(self):
+        '''
+        test to check if we can find a data by using email and display information
+        '''
+
+        self.new_lock.save_data()
+        test_user = Locker("bebe","ally","3333","bebe@gmail.com") # new contact
+        test_user.save_data()
+
+        find_email = Locker.find_email("bebe@gmail.com")
+
+        self.assertEqual(find_email.email,test_user.email)
 
           
 
