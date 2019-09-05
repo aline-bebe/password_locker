@@ -34,6 +34,35 @@ class TestLocker(unittest.TestCase):
         self.new_lock.save_data() # saving the new data
         self.assertEqual(len(Locker.locker_list),1)
 
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case has run.
+        '''
+        Locker.locker_list = []
+
+    def test_save_multiple_data(self):
+        '''
+        test_save_multiple_data to check if we can save multiple locker
+        objects to our locker_list
+        '''
+        self.new_lock.save_data()
+        test_user = Locker("bebe","ally","3333","bebe@gmail.com") # new data
+        test_user.save_data()
+        self.assertEqual(len(Locker.locker_list),2)
+
+    def test_delete_data(self):
+        '''
+        test_delete_data to test if we can remove a data from our locker list
+        '''
+        self.new_lock.save_data()
+        test_user = Locker("bebe","ally","333","bebe@gmail.com") # new data
+        test_contact.save_contact()
+
+        self.new_contact.delete_contact()# Deleting a contact object
+        self.assertEqual(len(Contact.contact_list),1)
+
+          
+
 
 if __name__ == '__main__':
     unittest.main()
