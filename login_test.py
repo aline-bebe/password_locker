@@ -56,10 +56,10 @@ class TestLocker(unittest.TestCase):
         '''
         self.new_lock.save_data()
         test_user = Locker("bebe","ally","333","bebe@gmail.com") # new data
-        test_contact.save_contact()
+        test_user.save_data()
 
-        self.new_contact.delete_contact()# Deleting a contact object
-        self.assertEqual(len(Contact.contact_list),1)
+        self.new_lock.delete_data()# Deleting a data object
+        self.assertEqual(len(Locker.locker_list),1)
 
           
 

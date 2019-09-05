@@ -23,4 +23,12 @@ class Locker:
         '''
 
         Locker.locker_list.append(self)
+
+    def delete_data(self):
+
+        '''
+        delete_data method deletes a saved data from the locker_list
+        '''
+
+        Locker.locker_list.remove(self)
     # pass
