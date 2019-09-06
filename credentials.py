@@ -66,3 +66,10 @@ class Credential:
 
         return False
 
+    @classmethod
+    def excute(cls):
+        '''
+        method that returns the list
+        '''
+        return cls.list_cred
+
