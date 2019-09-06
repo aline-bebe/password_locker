@@ -93,6 +93,17 @@ class TestCredentials(unittest.TestCase):
 
         self.assertEqual(Credential.excute(),Credential.list_cred)
 
+    def copy_name(self):
+        '''
+        Test to confirm that we are copying the name address from our data
+        '''
+
+        self.new_cred.keeped()
+        Credential.copy_username("gigi")
+
+        self.assertEqual(self.new_cred.username,pyperclip.paste())
+
+
 
 
 

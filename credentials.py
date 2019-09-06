@@ -73,3 +73,9 @@ class Credential:
         '''
         return cls.list_cred
 
+    @classmethod
+    def copy_username(cls,username):
+        checking = Credential.find_username(username)
+        pyperclip.copy(checking.username)
+
+
