@@ -72,6 +72,19 @@ class TestCredentials(unittest.TestCase):
 
         self.assertEqual(find_name.new_account,test_cred.new_account)
 
+    def test_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the our object.
+        '''
+
+        self.new_cred.keeped()
+        test_cred = Credential("gigi","4444","facebook") 
+        test_cred.keeped()
+
+        existing = Credential.cred_exists("gigi")
+
+        self.assertTrue(existing)
+
 
 
 
