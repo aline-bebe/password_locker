@@ -29,7 +29,7 @@ class TestLocker(unittest.TestCase):
 
     def test_save_data(self):
         '''
-        test_save_contact test case to test if the contact object is saved into
+        test_save_data test case to test if the contact object is saved into
          the lock list
         '''
         self.new_lock.save_data() # saving the new data

@@ -24,6 +24,14 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_cred.password,"4444")
         self.assertEqual(self.new_cred.new_account,"facebook")  
 
+    def test_save(self):
+        '''
+        test_save_data test case to test if the  object is saved into
+         the cred... list
+        '''
+        self.new_cred.keeped() # saving the new data
+        self.assertEqual(len(Credential.list_cred),1)
+
 
 
 

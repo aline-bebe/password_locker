@@ -15,3 +15,12 @@ class Credential:
         self.username =  username
         self.password = password
         self.new_account =  new_account
+
+
+    def keeped(self):
+
+        '''
+        save_data method saves  objects into cred_list
+        '''
+
+        Credential.list_cred.append(self)
