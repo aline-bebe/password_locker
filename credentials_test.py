@@ -59,6 +59,19 @@ class TestCredentials(unittest.TestCase):
         self.new_cred.remove()# Deleting a data object
         self.assertEqual(len(Credential.list_cred),1)
 
+    def test_find(self):
+        '''
+        test to check if we can find a data by using name and display information
+        '''
+
+        self.new_cred.keeped()
+        test_cred = Credential("ally","3333","wastap") # new contact
+        test_cred.keeped()
+
+        find_name = Credential.find_username("ally")
+
+        self.assertEqual(find_name.new_account,test_cred.new_account)
+
 
 
 
