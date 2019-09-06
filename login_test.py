@@ -87,6 +87,13 @@ class TestLocker(unittest.TestCase):
 
         self.assertTrue(data_check)
 
+    def test_to_display(self):
+        '''
+        method that returns a list of all objects saved
+        '''
+
+        self.assertEqual(Locker.display(),Locker.locker_list)
+
           
 
 

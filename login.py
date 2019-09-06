@@ -63,4 +63,11 @@ class Locker:
 
         return False
 
+    @classmethod
+    def display(cls):
+        '''
+        method that returns the locker list
+        '''
+        return cls.locker_list
+
     # pass
