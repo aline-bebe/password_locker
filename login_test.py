@@ -74,6 +74,19 @@ class TestLocker(unittest.TestCase):
 
         self.assertEqual(find_email.email,test_user.email)
 
+    def test_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the our object.
+        '''
+
+        self.new_lock.save_data()
+        test_locker = Locker("alexie","rusarwa","4444","alexie@ms.com") 
+        test_locker.save_data()
+
+        data_check = Locker.data_exists("alexie@ms.com")
+
+        self.assertTrue(data_check)
+
           
 
 

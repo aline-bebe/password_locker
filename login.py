@@ -46,4 +46,21 @@ class Locker:
         for login in cls.locker_list:
             if login.email == email:
                 return login
+
+
+    @classmethod
+    def data_exists(cls,email):
+        '''
+        Method that checks if a objects exists from the locker list.
+        Args:
+            email: email to search if it exists
+        Returns :
+            Boolean: True or false depending if the our object exists
+        '''
+        for login in cls.locker_list:
+            if login.email == email:
+                    return True
+
+        return False
+
     # pass
