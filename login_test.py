@@ -14,7 +14,7 @@ class TestLocker(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_lock = Locker("alexie","rusarwa","4444","alexie@ms.com") # create contact object
+        self.new_lock = Locker("alexie","rusarwa","4444","alexie@ms.com") 
 
 
     def test_init(self):
