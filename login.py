@@ -70,4 +70,9 @@ class Locker:
         '''
         return cls.locker_list
 
+    @classmethod
+    def copied_email(cls,email):
+        check = Contact.find_email(email)
+        pyperclip.copy(check.email)
+
     # pass

@@ -1,5 +1,6 @@
 import unittest
 from login import Locker 
+import pyperclip
 
 
 class TestLocker(unittest.TestCase):
@@ -93,6 +94,19 @@ class TestLocker(unittest.TestCase):
         '''
 
         self.assertEqual(Locker.display(),Locker.locker_list)
+
+       
+
+
+    def copy_name(self):
+        '''
+        Test to confirm that we are copying the name address from our data
+        '''
+
+        self.new_lock.save_data()
+        Locker.copied_name("alexie@ms.com")
+
+        self.assertEqual(self.new_lock.email,pyperclip.paste())
 
           
 
