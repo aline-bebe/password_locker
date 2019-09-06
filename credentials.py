@@ -24,3 +24,11 @@ class Credential:
         '''
 
         Credential.list_cred.append(self)
+
+    def remove(self):
+
+        '''
+        delete_data method deletes a saved data from the cred_list
+        '''
+
+        Credential.list_cred.remove(self)

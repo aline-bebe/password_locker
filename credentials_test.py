@@ -48,6 +48,17 @@ class TestCredentials(unittest.TestCase):
         test_cred.keeped()
         self.assertEqual(len(Credential.list_cred),2)
 
+    def test_delete(self):
+        '''
+        test_delete to test if we can remove a data from our cred list
+        '''
+        self.new_cred.keeped()
+        test_cred = Credential("ally","3333","wastap") # new data
+        test_cred.keeped()
+
+        self.new_cred.remove()# Deleting a data object
+        self.assertEqual(len(Credential.list_cred),1)
+
 
 
 
