@@ -71,6 +71,14 @@ class Locker:
         return cls.locker_list
 
     @classmethod
+    def checking(cls,email,password):
+        login_user=''
+        for login in Locker.locker_list:
+            if(login.email== email and login.password==password):
+                login_user=login.email
+        return login_user
+
+    @classmethod
     def copied_email(cls,email):
         check = Contact.find_email(email)
         pyperclip.copy(check.email)

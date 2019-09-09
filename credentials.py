@@ -1,3 +1,4 @@
+from login import Locker 
 class Credential:
     """
     Class that generates new instances of credential 
@@ -78,4 +79,10 @@ class Credential:
         checking = Credential.find_username(username)
         pyperclip.copy(checking.username)
 
-
+    @classmethod
+    def checking(cls,email,password):
+        login_user=''
+        for login in Locker.locker_list:
+            if(login.email== email and login.password==password):
+                login_user=login.email
+        return login_user

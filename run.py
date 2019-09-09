@@ -11,17 +11,17 @@ def create_users(fname,lname,password,email):
     new_lock = Locker(fname,lname,password,email)
     return new_lock
 
-def save_data(data):
+def save_data(login):
     '''
     Function to save data
     '''
-    data.save_data(data)
+    login.save_data()
 
-def verify_data(first_name,password):
+def checking(email,password):
     '''
     Function to verfy the existance of user
     ''' 
-    ckeck = Credential.checking(first_name,password)
+    check = Credential.checking(email,password)
     return check
 
 def generate_pass():
@@ -38,19 +38,19 @@ def create_cred(username,app_name,password):
     new_cred=Credential(username,app_name,password)
     return new_cred
 
-def save_cred(credentials)
+def save_cred(credentials):
     '''
     Function to save credentials
     '''
-    Credential.save_cred(credentials)
+    credentials.keeped()
 
-def display_cred(username)
+def display_cred(username):
     '''
     Function to display credentials
     '''
     return Credential.display_cred(username)
 
-def copy_cred(app_name)
+def copy_cred(app_name):
     '''
     Function to copy credentials
     '''
@@ -61,7 +61,7 @@ def main():
     print("Hello Welcome to your pass locker")
     while True:
         print(' ')
-        print("-"*80)
+        print("-"*100)
         print("Use these short codes :\n cc - create a new account \n lg -login \n dl -delete account \n ex -exit ")
         short_code = input('enter a choice: ').lower().strip()
 
@@ -74,38 +74,38 @@ def main():
             break
 
         elif short_code == 'cc':
-            print("-"*80)
+            print("-"*40)
             print(' ')
             print('creating new account:')
             first_name = input('enter your first_name - ').strip()
             last_name = input('enter last_name - ').strip()
-            emai = input('enter eamail - ').strip()
+            email = input('enter email - ').strip()
             password= input('enter your password - ').strip()
             save_data(create_users(first_name,last_name,email,password))
             print(" ")
             print(f'new account created for: {first_name}{last_name}{email} enter passwors: {password}')
             
         elif short_code == 'lg':
-            print("-"*80)
+            print("-"*50)
             print(' ')
             print('login and please enter your details:')
-            username = input('enter your name - ').strip()
+            email = input('enter your email - ').strip()
             password= str(input('enter your key - '))
-            check = verify_data (username,password)
-            if check == username:
+            check = checking (email,password)
+            if check == email:
                 print(" ")
-                print(f'welcome {username}.please choose any option to continue.')
+                print(f'welcome {email}.please choose any option to continue.')
                 print(' ')
                 while True:
-                    print("-"*80)
-                    print('to navigate to cred account use code:\n cc-create account \n dc- display credentials \n ex -exit')
+                    print("-"*60)
+                    print('to navigate to cred account use code:\n cc-create account \n dc- display credentials \n dl- delete \n ex -exit')
                     short_code=input('enter a choice: ').lower().strip()
-                    print("-"*80)
+                    print("-"*90)
                     if short_code =='ex':
                         print(' ')
-                        print(f'thank you! {username}.')
+                        print(f'thank you! {email}.')
                         break
-                    elif short_code == 'del'
+                    elif short_code == 'dl':
                         
                         print("-"*80)
                         print(' ')
@@ -114,7 +114,7 @@ def main():
 
                     elif short_code == 'cc':
                         print(' ')
-                        print('enter your credential: ')
+                        print('enter your new credential: ')
                         username = input('enter the user name-').strip()
                         app_name = input('enter the app name-').strip()
                         
@@ -148,11 +148,41 @@ def main():
                         print('repeat it again.')
                 save_cred(create_users(username,app_name,password))
                 print(' ')
-                print(f'Credential Created: username')
+                print(f'Credential Created: username: {username} -app_name:{app_name} -password:{password}')
+                print(' ')
+
+        elif short_code == 'ds':
+                print(' ')
+                if display_cred(username):
+                    print('here is a list of all credentials')
+                    print(' ')
+                    for credentials in display_cred(username):
+                        print(f'username: {credentials.username} -app_name: {credentials.app_name} -password: {credentials.password}')
+                        print(' ')
+
+                else:
+                    print(' ')
+                    print("you don't have cred")
+                    print(' ')
+
+        elif short_code == 'cp':
+            print(' ')
+            choise = input("enter the name of credentials app to copy: ")
+
+            copy_cred(choise)
+            print(' ')
+            
+        else:
+            print(' ')
+            print('try again or create another one.')
+    else:
+            print("-"*80)
+            print(' ')
+            print("try again")
 
 
-
-
+if __name__ == '__main__':
+    main()
 
 
 

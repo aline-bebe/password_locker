@@ -95,6 +95,25 @@ class TestLocker(unittest.TestCase):
 
         self.assertEqual(Locker.display(),Locker.locker_list)
 
+    def cheking_user(self):
+
+        """
+        this will test if login works
+        """
+
+        self.new_lock = Locker("alexie","rusarwa","4444","alexie@ms.com")
+        self.new_lock.save_data()
+        log=Locker("alexie","rusarwa","4444","alexie@ms.com")
+        log.save_data()
+
+        for login in Locker.locker_list:
+            if login.email == log.email and login.password==log.password:
+                login_user=login.email
+        return login_user
+        self.assertEqual(login_user,Credential,checking(log.password,log.email))
+
+    
+
        
 
 
