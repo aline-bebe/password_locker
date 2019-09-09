@@ -13,7 +13,7 @@ class TestCredentials(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_cred = Credential("gigi","4444","facebook") 
+        self.new_cred = Credential("gigi","4444","facebook","bebe@c.com") 
 
     def test_init(self):
         '''
@@ -23,7 +23,8 @@ class TestCredentials(unittest.TestCase):
        
         self.assertEqual(self.new_cred.username,"gigi")
         self.assertEqual(self.new_cred.password,"4444")
-        self.assertEqual(self.new_cred.new_account,"facebook")  
+        self.assertEqual(self.new_cred.new_account,"facebook") 
+        self.assertEqual(self.new_cred.email,"bebe@c.com")  
 
     def test_save(self):
         '''
@@ -31,6 +32,8 @@ class TestCredentials(unittest.TestCase):
          the cred... list
         '''
         self.new_cred.keeped() # saving the new data
+        instagram=Credential('aline','aline','instagram','aline@hhh')
+        instagram.keeped()
         self.assertEqual(len(Credential.list_cred),1)
 
     def tearDown(self):
@@ -45,16 +48,30 @@ class TestCredentials(unittest.TestCase):
         objects to our cred_list
         '''
         self.new_cred.keeped()
-        test_cred = Credential("ally","3333","wastap") # new data
+        test_cred = Credential("ally","3333","wastap","bebe@c.com") # new data
         test_cred.keeped()
         self.assertEqual(len(Credential.list_cred),2)
+    def test_display(self):
+        '''
+        display users
+        '''
+        self.assertEqual(Locker.display(),Locker.locker_list)
+    def test_diplay_cred(self):
+        '''
+        method to display credentials
+        '''
+
+        self.new_cred.keeped()
+        instagram=Credential("aline","aline","instragram","aline")
+        instagram.keeped()
+        self.assertEqual(len(Credential.excute(instagram.username)),1)
 
     def test_delete(self):
         '''
         test_delete to test if we can remove a data from our cred list
         '''
         self.new_cred.keeped()
-        test_cred = Credential("ally","3333","wastap") # new data
+        test_cred = Credential("ally","3333","wastap","bebe@c.com") # new data
         test_cred.keeped()
 
         self.new_cred.remove()# Deleting a data object
@@ -66,7 +83,7 @@ class TestCredentials(unittest.TestCase):
         '''
 
         self.new_cred.keeped()
-        test_cred = Credential("ally","3333","wastap") # new contact
+        test_cred = Credential("ally","3333","wastap","bebe@c.com") # new contact
         test_cred.keeped()
 
         find_name = Credential.find_username("ally")
@@ -79,7 +96,7 @@ class TestCredentials(unittest.TestCase):
         '''
 
         self.new_cred.keeped()
-        test_cred = Credential("gigi","4444","facebook") 
+        test_cred = Credential("gigi","4444","facebook","bebe@c.com") 
         test_cred.keeped()
 
         existing = Credential.cred_exists("gigi")
@@ -91,8 +108,11 @@ class TestCredentials(unittest.TestCase):
         '''
         method that returns a list of all objects saved
         '''
+        self.new_cred.keeped()
+        instagram=Credential("bebe","3333","twitter","bebe@c.com")
+        instagram.keeped()
 
-        self.assertEqual(Credential.excute(),Credential.list_cred)
+        self.assertEqual(len(Credential.excute(instagram.username)),1)
 
     def copy_name(self):
         '''

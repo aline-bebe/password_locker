@@ -4,8 +4,9 @@ class Credential:
     Class that generates new instances of credential 
     """
     list_cred = [] 
+    list_credentials= []
 
-    def __init__(self,username,password,new_account):
+    def __init__(self,username,password,new_account,email):
 
         '''
         __init__ method that helps us define properties for our objects.
@@ -16,8 +17,13 @@ class Credential:
         self.username =  username
         self.password = password
         self.new_account =  new_account
+        self.email =  email
 
-
+    # def save_cred(self):
+    #     '''
+    #     to save all credentials
+    #     ''''
+    #     Credential.
     def keeped(self):
 
         '''
@@ -68,11 +74,17 @@ class Credential:
         return False
 
     @classmethod
-    def excute(cls):
+    def excute(cls,username):
         '''
         method that returns the list
         '''
-        return cls.list_cred
+        list_credentials= []
+        for credentials in cls.list_cred:
+            if credentials.username == username:
+                list_credentials.append(credentials)
+                
+       
+        return list_credentials
 
     @classmethod
     def copy_username(cls,username):
